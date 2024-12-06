@@ -31,11 +31,11 @@ app.get('/', (req, res) => {
     res.json({ message: 'Hello world' });
 });
 
-// Database setup
-const { sequelize } = require('./model');
-sequelize.sync({ alter: true }).catch(err => {
-    console.error('Database connection error:', err);
-});
+// // Database setup
+// const { sequelize } = require('./model');
+// sequelize.sync({ alter: true }).catch(err => {
+//     console.error('Database connection error:', err);
+// });
 
 module.exports = app;
 
