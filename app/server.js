@@ -6,6 +6,11 @@ app.use(express.json());
 
 // app.use(router);
 app.use('/api/products', productRouter);
+app.use(router);
+app.use('/test', (req, res) => {
+    res.send('Hello world');
+})
+
 
 app.listen(7000, () => {
     console.log(`Server started on http://localhost:7000`);
