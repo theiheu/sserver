@@ -14,12 +14,22 @@ app.get('/', (req, res) => {
 
     res.send('Hello world');
 })
-
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`Server started on http://localhost:${process.env.PORT}`);
-});
-
 // setup sequelize
 const { sequelize } = require('./model')
 sequelize.sync({ alter: true })
+// Export for Vercel
+module.exports = app;
+
+// Only listen in development
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(process.env.PORT || 3000, () => {
+        console.log(`Server started on http://localhost:${process.env.PORT}`);
+    });
+}
+
+
+
+
+
+
+
