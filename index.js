@@ -1,45 +1,45 @@
-// require('dotenv').config()
-// const { Sequelize, DataTypes } = require('sequelize')
-// const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USE,  process.env.DB_PASS, {
-//     host: process.env.DB_HOST,
-//     port: process.env.DB_PORT,
-//     dialect: 'mysql'
-// })
+require('dotenv').config()
+const { Sequelize, DataTypes } = require('sequelize')
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USE,  process.env.DB_PASS, {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'mysql'
+})
 
-// const Task = sequelize.define(
-//     'products',
-//     {
-//         name: {
-//             type: DataTypes.STRING
-//         },
-//         price: {
-//             type: DataTypes.INTEGER
-//         },
-//         screen: {
-//             type: DataTypes.STRING
-//         },
-//         blackcamera: {
-//             type: DataTypes.STRING
-//         },
-//         frontcamera: {
-//             type: DataTypes.STRING
-//         },
-//         img: {
-//             type: DataTypes.STRING
-//         },
-//         description: {
-//             type: DataTypes.STRING
-//         },
-//         type: {
-//             type: DataTypes.STRING
-//         }
-//     }
-// )
-// const syncModel = async () => {
-//     await Task.sync({ force: true })
-//     console.log('đã đồng bộ Task')
-// }
-// syncModel()
+const Task = sequelize.define(
+    'products',
+    {
+        name: {
+            type: DataTypes.STRING
+        },
+        price: {
+            type: DataTypes.INTEGER
+        },
+        screen: {
+            type: DataTypes.STRING
+        },
+        blackcamera: {
+            type: DataTypes.STRING
+        },
+        frontcamera: {
+            type: DataTypes.STRING
+        },
+        img: {
+            type: DataTypes.STRING
+        },
+        description: {
+            type: DataTypes.STRING
+        },
+        type: {
+            type: DataTypes.STRING
+        }
+    }
+)
+const syncModel = async () => {
+    await Task.sync({ force: true })
+    console.log('đã đồng bộ Task')
+}
+syncModel()
 
 const createTask = async (name, price, screen) => {
     const newTask = await Task.create({
@@ -88,3 +88,17 @@ const checkConnect = async () => {
     }
 }
 checkConnect()
+
+// const mysql = require('mysql2');
+
+// const connection = mysql.createConnection({
+//   host: 'mysql-933708d-excersie-cyber.e.aivencloud.com',
+// });
+
+// connection.connect((err) => {
+//   if (err) {
+//     console.error('Lỗi kết nối: ' + err.stack);
+//     return;
+//   }
+//   console.log('Đã kết nối với ID: ' + connection.threadId);
+// });
